@@ -1,0 +1,21 @@
+version: 2
+updates:
+  # Check for vulnerable dependencies in the C# (NuGet) ecosystem
+  - package-ecosystem: "nuget"
+    
+    # Look for the .csproj file in the root directory
+    directory: "/"
+    
+    schedule:
+      # Weekly is usually sufficient for goat testing without generating noise
+      interval: "weekly"
+      
+    # ⚠️ EXPERT GOAT SETTING: 
+    # Set this to 0 to PREVENT Dependabot from automatically opening Pull Requests.
+    # It will still scan and populate the GitHub Security tab with alerts, 
+    # but it won't attempt to patch the vulnerabilities, ensuring your project
+    # remains intentionally vulnerable for your other testing tools.
+    open-pull-requests-limit: 0
+
+    # If you explicitly WANT to test Dependabot's PR generation feature,
+    # comment out the line above or change the limit to a number like 5.
